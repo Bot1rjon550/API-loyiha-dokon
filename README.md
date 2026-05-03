@@ -1,44 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>FakeStore API Products</title>
-		<link rel="stylesheet" href="main.css" />
-		<link rel="icon" type="./image/new.jpg" href="./image/new.jpg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-	<body>
-		<div class="image">
-			<img src="./image/versace.png" alt="" />
-			<img src="./image/zara.png" alt="" />
-			<img src="./image/gucci.png" alt="" />
-			<img src="./image/prada.png" alt="" />
-			<img src="./image/calivin.png" alt="" />
-		</div>
+const API = "https://fakestoreapi.com/products";
+const container = document.querySelector(".container");
 
-		<div class="container"></div>
+function getData() {
+	fetch(API)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log("data:", data);
+			container.innerHTML = "";
 
-		<div class="text"></div>
-
-		<div class="image">
-			<img src="./image/versace.png" alt="" />
-			<img src="./image/zara.png" alt="" />
-			<img src="./image/gucci.png" alt="" />
-			<img src="./image/prada.png" alt="" />
-			<img src="./image/calivin.png" alt="" />
-		</div>
+			data.forEach((item) => {
+				container.innerHTML += `
+					<div class="card1">
+						<img src="${item.image}" alt="${item.title}" />
+					<div class="text">
+						<h2>${item.title}</h2>
+						<p>${item.price}$</p>
+						<span>${item.category}</span>
+					</div>
 
 
-		<script src="app.js"></script>
-	</body>
-</html>
+					</div>
+				`;
+			});
+		});
+}
+
+getData();
+
+/* PKJqqVnKPuiRAkTqaFVYtqYRIEnziO9E4pRvFluQ6M0p0xfbBZCCrlLq */
 
